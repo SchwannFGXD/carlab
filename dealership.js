@@ -34,4 +34,4 @@ Dealership.prototype.totalValue = function(){
     return sum;
 }
 
-
+module.exports = Dealership;
