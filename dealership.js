@@ -16,22 +16,20 @@ Dealership.prototype.addCar = function(car){
     }
 }
 
-Dealership.prototype.carByManufacturer = function(manufacturerName){
-    const specificList = [];
-    for(let car of this.carList){
-        if(car.manufacturer === manufacturerName){
-            specificList.push(car);
-        }
-    }
-    return specificList;
+Dealership.prototype.carManufacturers = function(){
+    return this.carList.map((car) => {
+        return car.manufacturer
+    })
 }
 
-Dealership.prototype.totalValue = function(){
-    let sum = 0;
-    for(let car of this.carList){
-        sum += car.price;
-    }
-    return sum;
+Dealership.prototype.carByManufacturer = function(manufacturerName){
+    return this.carList.filter((car)=>{
+        return car.manufacturer === manufacturerName;
+    })
+}
+
+Dealership.prototype.totalValue = function () {
+    return this.carList.reduce((reducer, car) => reducer + car.price, 0);
 }
 
 module.exports = Dealership;
